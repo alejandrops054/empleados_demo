@@ -19,7 +19,7 @@
 
       <div class="box-header with-border">
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarPuestos">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarempleadopuesto">
           
            Agregar Empleado puesto
 
@@ -47,7 +47,7 @@
         $item = null;
         $valor = null;
 
-        $empleadopuesto = ControladorPuesto::ctrMostrarPuesto($item, $valor);
+        $empleadopuesto = ControladorEmpleadopuesto::ctrMostrarEmpleadopuesto($item, $valor);
 
        foreach ($empleadopuesto as $key => $value){
          
@@ -125,7 +125,7 @@ MODAL AGREGAR PUESTO
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
-                    <select class="form-control input-lg" id="nuevapuesto" name="nuevapuesto" required>
+                    <select class="form-control input-lg" id="nuevapuestompleadopuesto" name="nuevapuestompleadopuesto" required>
                         <?php 
                             $item = null;
                             $valor = null;
@@ -133,6 +133,24 @@ MODAL AGREGAR PUESTO
                             $puestos = ControladorPuesto::ctrMostrarPuesto($item, $valor);
 
                             foreach($puestos as $key => $value){
+                                echo'<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
+                            }
+                        ?>
+                    </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+                    <select class="form-control input-lg" id="nuevausuariompleadopuesto" name="nuevausuariompleadopuesto" required>
+                        <?php 
+                            $item = null;
+                            $valor = null;
+                             
+                            $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+                            foreach($usuarios as $key => $value){
                                 echo'<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
                             }
                         ?>
@@ -150,13 +168,13 @@ MODAL AGREGAR PUESTO
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary">Guardar Puesto</button>
+          <button type="submit" class="btn btn-primary">Guardar empleado puesto</button>
         </div>
 
         <?php
 
-          $crearUsuario = new ControladorPuesto();
-          $crearUsuario -> ctrCrearPuesto();
+          $crearEmpleadopuesto = new ControladorEmpleadopuesto();
+          $crearEmpleadopuesto -> ctrCrearEmpleadopuesto();
 
         ?>
 
@@ -219,7 +237,7 @@ MODAL EDITAR PUESTO
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary">Modificar Puesto</button>
+          <button type="submit" class="btn btn-primary">Modificar empleado puesto</button>
         </div>
 
         <?php
